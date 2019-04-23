@@ -1,9 +1,21 @@
-const table = document.querySelector('#calculator');
+const calculator = document.querySelector(".container");
 
-function createScreen() {
-  let calcScreen = document.createElement('td');
-  calcScreen.classList.add('screen');
-  table.appendChild(calcScreen);
+function add(a, b) {
+  let sum = a + b;
+  return sum;
 }
 
-createScreen();
+function subtract(a, b) {
+  let sub = a - b;
+  return sub;
+}
+
+function multiply(a, b) {
+  let multiply = a * b;
+  return multiply;
+}
+
+function divide(a, b) {
+  let div = a / b;
+  return div;
+}

@@ -1,12 +1,22 @@
-table {
-  width: 25%;
-  height: 400px;
-  border-style: solid;
-  border-width: 1px;
+.container {
+  border: 1px solid black;
+  width: 400px;
+  left: 40%;
+  position: absolute;
 }
 
-.screen {
-  height: 82px;
-  border-style: solid;
-  border-width: 1px;
+#screen {
+  width: 396px;
+  height: 60px;
+  border: 1px solid black;
+}
+
+#buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+button {
+  height: 60px;
+  border-radius: 5px;
 }

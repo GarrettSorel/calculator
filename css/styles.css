@@ -18,5 +18,20 @@
 
 button {
   height: 60px;
-  border-radius: 5px;
+  border-radius: 35px;
+  box-shadow: 0px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.btn-number {
+  background-color: #003366;
+}
+
+.btn-operator {
+  background-color: #778899;
+}
+
+.btn-equals {
+  background-color: #ffa500;
 }

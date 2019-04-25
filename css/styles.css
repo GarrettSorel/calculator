@@ -9,6 +9,8 @@
   width: 396px;
   height: 60px;
   border: 1px solid black;
+  font-size: 40px;
+  text-align: right;
 }
 
 #buttons {

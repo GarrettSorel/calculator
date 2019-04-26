@@ -14,20 +14,47 @@ keys.addEventListener('click', (e) => {
   }
 
   if (target.classList.contains('btn-operator')) {
-    console.log("operator", target.value);
+    handleOperator(target.value);
+    updateScreen();
   }
 
   if (target.classList.contains('btn-number')) {
-    console.log("number", target.value);
+    inputNumber(target.value);
+    updateScreen();
   }
 
   if (target.classList.contains('btn-equals')) {
-    console.log("equals", target.value);
   }
 })
 
+function inputNumber(digit) {
+  const { displayNumber, waitingforSecondNumber } = calculator;
+
+  if (calculator.waitingForSecondNumber === true) {
+    calculator.displayNumber = digit;
+    calculator.waitingForSecondNumber = false;
+  } else {
+    calculator.displayNumber = displayNumber === '0' ? digit : displayNumber + digit;
+  }
+  console.log(calculator);
+}
+
+function handleOperator(newOperator) {
+  const { firstNumber, displayNumber, operator } = calculator;
+  const inputValue = parseFloat(displayNumber);
+
+  if (firstNumber === null) {
+    calculator.firstNumber = inputValue;
+  }
+
+  calculator.waitingForSecondNumber = true;
+  calculator.operator = newOperator;
+  console.log(calculator);
+}
+
 function clearScreen() {
-  document.querySelector("#screen").value = "0";
+  calculator.displayNumber = "0";
+  updateScreen();
 }
 
 function updateScreen() {

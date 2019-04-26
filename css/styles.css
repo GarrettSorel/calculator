@@ -30,7 +30,7 @@ button {
   background-color: #003366;
 }
 
-.btn-operator {
+.btn-operator, .btn-clear {
   background-color: #778899;
 }
 

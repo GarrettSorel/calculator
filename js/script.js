@@ -6,6 +6,7 @@ const calculator = {
   operator: null,
 }
 
+//logic for button click events
 const keys = document.querySelector("#buttons");
 keys.addEventListener('click', (e) => {
   const { target } = e;
@@ -29,6 +30,7 @@ keys.addEventListener('click', (e) => {
   }
 })
 
+//changes the display number based on user inputs
 function inputNumber(digit) {
   const { displayNumber, waitingforSecondNumber } = calculator;
 
@@ -41,6 +43,8 @@ function inputNumber(digit) {
   console.log(calculator);
 }
 
+//uses one of the operators and helps create chains
+//example: 2 + 3 * 4
 function handleOperator(newOperator) {
   const { firstNumber, displayNumber, operator } = calculator;
   const inputValue = parseFloat(displayNumber);
@@ -59,6 +63,7 @@ function handleOperator(newOperator) {
   console.log(calculator);
 }
 
+//resets the calculator objects
 function clearScreen() {
   calculator.displayNumber = "0";
   calculator.firstNumber = null;
@@ -67,11 +72,13 @@ function clearScreen() {
   updateScreen();
 }
 
+//used to display the current displayNumber on the screen
 function updateScreen() {
   const display = document.querySelector("#screen");
   display.value = calculator.displayNumber;
 }
 
+//basic math functions
 function add(a, b) {
   calculator.displayNumber = parseFloat(a) + parseFloat(b);
 }
@@ -92,6 +99,7 @@ function divide(a, b) {
   }
 }
 
+//called on operator click to fire a math function
 function operate() {
   if (calculator.operator === '+') {
     add(calculator.firstNumber, calculator.displayNumber);

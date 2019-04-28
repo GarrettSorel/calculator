@@ -24,6 +24,8 @@ keys.addEventListener('click', (e) => {
   }
 
   if (target.classList.contains('btn-equals')) {
+    handleOperator(target.value);
+    updateScreen();
   }
 })
 
@@ -45,6 +47,11 @@ function handleOperator(newOperator) {
 
   if (firstNumber === null) {
     calculator.firstNumber = inputValue;
+  } else if (operator != '=') {
+    operate();
+    calculator.firstNumber = calculator.displayNumber;
+  } else if (operator === '=') {
+    operate();
   }
 
   calculator.waitingForSecondNumber = true;
@@ -54,6 +61,9 @@ function handleOperator(newOperator) {
 
 function clearScreen() {
   calculator.displayNumber = "0";
+  calculator.firstNumber = null;
+  calculator.waitingForSecondNumber = false;
+  calculator.operator = null;
   updateScreen();
 }
 
@@ -63,34 +73,38 @@ function updateScreen() {
 }
 
 function add(a, b) {
-  return a + b;
+  calculator.displayNumber = parseFloat(a) + parseFloat(b);
 }
 
 function subtract(a, b) {
-  return a - b;
+  calculator.displayNumber = parseFloat(a) - parseFloat(b);
 }
 
 function multiply(a, b) {
-  return a * b;
+  calculator.displayNumber = parseFloat(a) * parseFloat(b);
 }
 
 function divide(a, b) {
   if (b === 0) {
-    return "Not Like This...Not Like This..."
+    alert("Not Like This...Not Like This...");
   } else {
-  return a / b;
+    calculator.displayNumber = parseFloat(a) / parseFloat(b);
   }
 }
 
-function operate(op, a, b) {
-  if (op === "+") {
-    add(a,b);
-  } else if (op === "-") {
-    subtract(a,b);
-  } else if (op === "*") {
-    multiply(a,b);
-  } else if (op === "/") {
-    divide(a,b);
+function operate() {
+  if (calculator.operator === '+') {
+    add(calculator.firstNumber, calculator.displayNumber);
+    updateScreen();
+  } else if (calculator.operator === '-') {
+    subtract(calculator.firstNumber, calculator.displayNumber);
+    updateScreen();
+  } else if (calculator.operator === '*') {
+    multiply(calculator.firstNumber, calculator.displayNumber);
+    updateScreen();
+  } else if (calculator.operator === '/') {
+    divide(calculator.firstNumber, calculator.displayNumber);
+    updateScreen();
   }
 }
 
